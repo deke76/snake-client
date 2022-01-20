@@ -1,5 +1,23 @@
+let server;
+
+const objSnakeMoves = {
+  up: 'Move: up',
+  right: 'Move: right',
+  down: 'Move: down',
+  left: 'Move: left'
+};
+  
+const moveSnake = function(strMove, callback) {
+  setTimeout(() => {
+    server.write(strMove);
+    callback(strMove, callback);
+    return;
+  }, 1000);
+};
+
 // setup interface to handle user input from stdin
-const setupInput = function() {
+const setupInput = (conn) => {
+  server = conn;
   const stdin = process.stdin;
   stdin.setRawMode(true);
   stdin.setEncoding("utf8");
@@ -14,7 +32,7 @@ const handleUserInput = function(key) {
     process.exit();
     break;
   case 'W':
-    console.log('up');
+    moveSnake(objSnakeMoves.up, moveSnake);
     break;
   case 'D':
     console.log('right');
