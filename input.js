@@ -7,13 +7,10 @@ const objSnakeMoves = {
   left: 'Move: left'
 };
   
-const moveSnake = function(strMove, callback) {
-  setTimeout(() => {
-    server.write(strMove);
-    callback(strMove, callback);
-    return;
-  }, 1000);
-};
+// const moveSnake = function(strMove, callback) {
+//   server.write(strMove);
+//   callback(strMove, callback);
+// };
 
 // setup interface to handle user input from stdin
 const setupInput = (conn) => {
@@ -32,16 +29,25 @@ const handleUserInput = function(key) {
     process.exit();
     break;
   case 'W':
-    moveSnake(objSnakeMoves.up, moveSnake);
+    server.write(objSnakeMoves.up);
     break;
   case 'D':
-    console.log('right');
+    server.write(objSnakeMoves.right);
     break;
   case 'S':
-    console.log('down');
+    server.write(objSnakeMoves.down);
     break;
   case 'A':
-    console.log('left');
+    server.write(objSnakeMoves.left);
+    break;
+  case 'O':
+    server.write('Say: Oh yeah!');
+    break;
+  case 'B':
+    server.write('Say: Back off!');
+    break;
+  case 'N':
+    server.write('Say: Not today, good sir!');
     break;
   }
 };
