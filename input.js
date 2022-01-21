@@ -1,11 +1,6 @@
-let server;
+const { objSnakeMoves } = require('./play');
 
-const objSnakeMoves = {
-  up: 'Move: up',
-  right: 'Move: right',
-  down: 'Move: down',
-  left: 'Move: left'
-};
+let server;
   
 // const moveSnake = function(strMove, callback) {
 //   server.write(strMove);

@@ -2,6 +2,13 @@
 const { connect } = require('./client.js');
 const { setupInput } = require('./input.js');
 
+const objSnakeMoves = {
+  up: 'Move: up',
+  right: 'Move: right',
+  down: 'Move: down',
+  left: 'Move: left'
+};
+
 console.log("Connecting ...");
 let server = connect();
 
@@ -14,3 +21,5 @@ server.on('data', (data) => {
 server.on('connect', () => {
   server.write('Name: DKL');
 });
+
+module.exports = { objSnakeMoves };
